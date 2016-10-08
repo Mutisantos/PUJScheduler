@@ -1,0 +1,33 @@
+<!Doctype html>
+
+<title>Flask - Algoritmos</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='/css/materialize.min.css')}}">
+<script src="{{ url_for('static',filename='/js/materialize.js')}}"></script>
+
+<html>
+    <head>
+        <title>Server simple</title>
+    </head>
+    <body class = "teal lighten-3">
+          <nav class ="teal darken-1">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">Logo</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Nav1</a></li>
+                <li><a href="badges.html">Nav2</a></li>
+                <li><a href="collapsible.html">Nav3</a></li>
+              </ul>
+            </div>
+          </nav>
+        <div class="container">
+                <ul>
+                {% for name in names %}
+                    <li class ="blue darken-1 center">{{ name }}</li>
+                {% endfor %}
+                </ul>
+        </div>
+        <div class="container">     
+                <a class="waves-effect waves-light btn" href="{{url_for('login')}}">button</a>       
+        </div>
+    </body>
+</html>
