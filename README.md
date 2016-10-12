@@ -15,15 +15,15 @@ Interfaz de Python Flask para uso Local para el gestor automático de programaci
 ###Abriendo la consola de comandos, realizar las siguientes operaciones
 
 
-1. `sudo apt-get install python-pip python-dev build-essential`
-2. `sudo pip install --upgrade pip`
-3. `git clone https://github.com/Mutisantos/PUJScheduler.git`
-4. `cd PUJScheduler`
-5. `pip install requirements` 
-6. `python server.py`
+1. `sudo apt-get install python-dev build-essential (Solo si hace falta instalar python)` 
+2. `sudo apt-get install python-pip`
+3. `sudo pip install --upgrade pip`
+4. `git clone https://github.com/Mutisantos/PUJScheduler.git`
+5. `cd PUJScheduler`
+6. `(sudo) pip install requirements` 
+7. `python server.py`
 
-### Una vez se ejecuta la ultima linea, poniendo en el navegador localhost:5000
-### Se puede ver la interfaz ejecutandose 
+### Una vez se ejecuta la ultima linea, poniendo en el navegador localhost:5000 Se puede ver la interfaz ejecutandose 
 
 ## Modo de Uso 
 
