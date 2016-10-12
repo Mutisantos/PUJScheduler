@@ -14,7 +14,6 @@ Interfaz de Python Flask para uso Local para el gestor automático de programaci
 
 ###Abriendo la consola de comandos, realizar las siguientes operaciones
 
-
 1. `sudo apt-get install python-dev build-essential (Solo si hace falta instalar python)` 
 2. `sudo apt-get install python-pip`
 3. `sudo pip install --upgrade pip`
@@ -23,7 +22,8 @@ Interfaz de Python Flask para uso Local para el gestor automático de programaci
 6. `(sudo) pip install requirements` 
 7. `python server.py`
 
-### Una vez se ejecuta la ultima linea, poniendo en el navegador localhost:5000 Se puede ver la interfaz ejecutandose 
+### Una vez se ejecuta la ultima linea, poniendo en el navegador localhost:5000
+### Se puede ver la interfaz ejecutandose 
 
 ## Modo de Uso 
 
@@ -36,7 +36,7 @@ de las condiciones mencionadas a continuación:
 - Si el algoritmo fue realizado en Python, debe introducirse el archivo .py del código
 - Si el algoritmo fue realizado en Java, debe introducirse el archivo .class generado al realizar el comando `javac miAlgoritmo.java`.
 - Si se planea utilizar otro lenguaje de programación, se solicita avisar con anticipación para darle soporte a la ejecución
-- Asegurarse que el archivo a ejecutar tiene permisos de ejecución
+- Asegurarse que el archivo del algoritmo tiene permisos de ejecución
 - Se recomienda que el algoritmo se encuentre en la misma carpeta que el server.py
 
 
