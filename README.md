@@ -36,7 +36,8 @@ de las condiciones mencionadas a continuación:
 - Si el algoritmo fue realizado en Python, debe introducirse el archivo .py del código
 - Si el algoritmo fue realizado en Java, debe introducirse el archivo .class generado al realizar el comando `javac miAlgoritmo.java`.
 - Si se planea utilizar otro lenguaje de programación, se solicita avisar con anticipación para darle soporte a la ejecución
-
+- Asegurarse que el archivo a ejecutar tiene permisos de ejecución
+- Se recomienda que el algoritmo se encuentre en la misma carpeta que el server.py
 
 
 
