@@ -16,5 +16,5 @@ Mundos Virtuales,2,2,1
 Japonés 1,2,3,1
 5,30,Sensei,3
 14,16,lunes
-14,16,martes
+14,16,miercoles
 14,16,viernes

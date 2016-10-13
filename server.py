@@ -10,7 +10,7 @@ from flask import Flask, render_template,request, send_from_directory
 app = Flask(__name__,static_url_path='')
 
 #Diccionario de Lenguajes
-LANGAUGE_OPTIONS = [ {"name":"C++/C","value":"1"},{"name":"Java","value":"2" }, {"name":"Python","value":"3"} ]
+LANGAUGE_OPTIONS = [ {"name":"C++/C","value":"1"},{"name":"Java","value":"2" }, {"name":"Python","value":"3"},{"name":"Ruby","value":"4"} ]
 #Carga de Datos en memoria para la representacion de la informacion
 Students = []
 Subjects = []
@@ -166,7 +166,6 @@ def scheduleMorpher(clases):
                     sc = Slot(bloque+i,7,cl)
                     horario.append(sc)
                 
-    print horario
     return horario          
 
 
@@ -191,7 +190,9 @@ def executefile():
     elif (language == "3"):
         command.append("python")
         command.append(filename)
-    print command
+    elif (language == "4"):
+        command.append("ruby")
+        command.append(filename)
     subprocess.call(command)
     #Leer el archivo de texto generado
     #Interpretarlo y enviarlo al template
@@ -207,12 +208,17 @@ def schedule():
     for i in Inscritos:
         if(i.ID == estID):
             estudiante = i
-    print estudiante.materias
+
     slots = scheduleMorpher(estudiante.materias)#Realmente, clases
     bloques = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     dias = [1,2,3,4,5,6,7]
     return render_template("horarios.html",estudiante = estudiante, slots = slots, bloques = bloques, dias = dias)
 
+@app.route('/resource/')
+def result():
+    
+
+    return render_template("resultados.html")
 
 
 

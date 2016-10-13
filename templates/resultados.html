@@ -1,0 +1,99 @@
+<!Doctype html>
+
+<title>Flask - Algoritmos</title>
+
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='/css/materialize.min.css')}}">
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='/css/aux.css')}}">
+
+
+<script src="{{ url_for('static',filename='/js/jquery.min.js')}}"></script>
+<script src="{{ url_for('static',filename='/js/materialize.min.js')}}"></script>
+<script src="{{ url_for('static',filename='/js/materialize.js')}}"></script>
+
+<!--Inicializar el Select-->
+<html>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
+    $(document).ready(function() {
+        $('.tooltipped').tooltip({
+            delay: 50
+        });
+    });
+</script>
+
+
+<head>
+    <title>Server simple</title>
+</head>
+
+<main>
+
+    <body class="blue-grey lighten-5">
+        <div class="page-flexbox-wrapper">
+            <header>
+                <nav class="light-blue lighten-1">
+                    <div class="nav-wrapper">
+                        <a href="#" class="brand-logo center">PUJScheduler</a>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                                <li>Resultados de Eficiencia</li>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <form class="col s12" method="POST" action="/execute/">
+                        <div class="row">
+                            <div class="input-field col m12 s12 l6">
+                                <input id="fileselect" class="validate tooltipped" type="text" required name="filename" data-tooltip="Poner el archivo con la ruta correspondiente">
+                                <label for="fileselct">Clases Cerradas</label>
+                            </div>
+                            <div class="input-field col m12 s12 l6">
+                                <input id="fileselect" class="validate tooltipped" type="text" required name="filename" data-tooltip="Poner el archivo con la ruta correspondiente">
+                                <label for="fileselct">Clases Objetivo</label>
+                            </div>
+                            <div class="input-field col m12 s12 l6">
+                                <input id="fileselect" class="validate tooltipped" type="text" required name="filename" data-tooltip="Poner el archivo con la ruta correspondiente">
+                                <label for="fileselct">Materias no inscritas por los estudiantes</label>
+                            </div>
+                            <div class="input-field col m12 s12 l6">
+                                <input id="fileselect" class="validate tooltipped" type="text" required name="filename" data-tooltip="Poner el archivo con la ruta correspondiente">
+                                <label for="fileselct">Materias Objetivo </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </main>
+            <footer class="page-footer orange" id="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l4 offset-l2 s12">
+                            <h5 class="white-text">Un desarrollo de </h5>
+                            <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!">Camilo Benavides</a></li>
+                                <li><a class="grey-text text-lighten-3" href="https://github.com/Mutisantos">Esteban Hernández</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Jimena Vargas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="container">
+                        Potenciado por CSSMaterialize©
+                        <a class="grey-text text-lighten-4 right" href="http://materializecss.com/">Materialize</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+
+</html>
