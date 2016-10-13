@@ -63,20 +63,22 @@
                         
                         {% for b in bloques %}
                         <tr>
+                            {% set count = 0 %}
                             {% for d in dias %}
-                                {% set count = 0 %}
+                               
                                 {% for s in slots %}
-                                    {% if s.posicion|int() == b|int()%}
-                                        {% if s.dia|int() == d|int()%}
-                                            <td>{{s.clase.ID+"-"+s.clase.profesor+s.dia|string}}</td>
-                                            {% set count = count + 1 %}
+                                    {% if s.posicion|int == b|int%}
+                                        {% if s.dia == d%}
+                                            <td>{{s.clase.ID+"-"+s.clase.profesor+s.dia|string+"-"+s.posicion|string}}</td>
+                                            {% set count = 1 %}
                                         {% endif %}
                                     {% endif %}    
                                 {% endfor %}
-                                {% if count|int() == 0 %}
-                                    <td>-</td>
+                                {% if count == 1 %}
+                                <td>-</td>
                                 {%endif %}
                             {% endfor %}
+
                         </tr>
                         {% endfor %}
                     </tbody>
