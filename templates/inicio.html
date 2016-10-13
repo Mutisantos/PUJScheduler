@@ -1,0 +1,174 @@
+<!Doctype html>
+
+<title>Flask - Algoritmos</title>
+
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='/css/materialize.min.css')}}">
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='/css/aux.css')}}">
+
+
+<script src="{{ url_for('static',filename='/js/jquery.min.js')}}"></script>
+<script src="{{ url_for('static',filename='/js/materialize.min.js')}}"></script>
+<script src="{{ url_for('static',filename='/js/materialize.js')}}"></script>
+
+<!--Inicializar el Select-->
+<html>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
+    $(document).ready(function() {
+        $('.tooltipped').tooltip({
+            delay: 50
+        });
+    });
+</script>
+
+
+<head>
+    <title>Server simple</title>
+</head>
+
+<main>
+
+    <body class="blue-grey lighten-5">
+        <div class="page-flexbox-wrapper">
+            <header>
+                <nav class="light-blue lighten-1">
+                    <div class="nav-wrapper">
+                        <a href="#" class="brand-logo center">PUJScheduler</a>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <ol>
+                                <li>Selecciona el lenguaje de programación utilizado</li>
+                                <li>Escribe la ruta y nombre del archivo</li>
+                                <li>(Solo el nombre si esta junto a server.py)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <form class="col s12" method="POST" action="/execute/">
+                        <div class="row">
+                            <div class="input-field col m12 s12 l6">
+                                <select name="language">
+                    {% for l in languages %}    
+                      <option value="{{l['value']}}">{{l['name']}}</option>
+                      {% endfor %}
+                    </select>
+
+                            </div>
+                            <div class="input-field col m12 s12 l6">
+                                <input id="fileselect" class="validate tooltipped" type="text" required name="filename" data-tooltip="Poner el archivo con la ruta correspondiente">
+                                <label for="fileselct">Archivo de Algoritmo</label>
+                            </div>
+                        </div>
+                        <div class="input-field col 4 s12">
+                            <button class="waves-effect waves-light btn orange accent-3" type="submit"> Ejecutar </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="container section">
+                    <table id="table" class="responsive-table centered center highlight">
+                        <thead class="light-blue lighten-1 white-text">
+                            <tr class="center">
+                                <th data-field="Lunes">Lunes</th>
+                                <th data-field="Martes">Martes</th>
+                                <th data-field="Miercoles">Miercoles</th>
+                                <th data-field="Jueves">Jueves</th>
+                                <th data-field="Viernes">Viernes</th>
+                                <th data-field="Sábado">Sábado</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <!--Primera Hora -->
+                                <td>Clase 1</td>
+                                <td>Clase 2</td>
+                                <td>Clase 1</td>
+                                <td></td>
+                                <td></td>
+                                <td>Clase 3</td>
+                            </tr>
+                            <tr>
+                                <!--Segunda Hora -->
+                                <td>Clase 1</td>
+                                <td>Clase 2</td>
+                                <td>Clase 1</td>
+                                <td>Clase 4</td>
+                                <td></td>
+                                <td>Clase 3</td>
+                            </tr>
+                            <tr>
+                                <!--Tercera Hora -->
+                                <td>Clase 1</td>
+                                <td>Clase 5</td>
+                                <td>Clase 1</td>
+                                <td>Clase 4</td>
+                                <td></td>
+                                <td>Clase 3</td>
+                            </tr>
+                            <tr>
+                                <!--Cuarta Hora -->
+                                <td>Clase 6</td>
+                                <td>Clase 5</td>
+                                <td>Clase 6</td>
+                                <td></td>
+                                <td></td>
+                                <td>Clase 7</td>
+                            </tr>
+                            <tr>
+                                <!--Quinta Hora -->
+                                <td>Clase 6</td>
+                                <td>Clase 5</td>
+                                <td>Clase 6</td>
+                                <td></td>
+                                <td></td>
+                                <td>Clase 7</td>
+                            </tr>
+                            <tr>
+                                <!--Sexta Hora -->
+                                <td>Clase 1</td>
+                                <td>Clase 1</td>
+                                <td></td>
+                                <td></td>
+                                <td>Clase 2</td>
+                                <td></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+            <footer class="page-footer orange" id="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l4 offset-l2 s12">
+                            <h5 class="white-text">Un desarrollo de </h5>
+                            <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!">Camilo Benavides</a></li>
+                                <li><a class="grey-text text-lighten-3" href="https://github.com/Mutisantos">Esteban Hernández</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Jimena Vargas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="container">
+                        Potenciado por CSSMaterialize©
+                        <a class="grey-text text-lighten-4 right" href="http://materializecss.com/">Materialize</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+
+</html>

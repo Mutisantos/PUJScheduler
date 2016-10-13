@@ -1,0 +1,19 @@
+  .page-flexbox-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 1 auto;
+  }
+  
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  table.highlight tbody tr:hover {
+    background-color: #00b0ff;
+  }

@@ -29,15 +29,15 @@
 <body class="blue-grey lighten-5">
     <nav class="light-blue lighten-1">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">PUJScheduler 1</a>
+            <a href="#" class="brand-logo center">PUJ Scheduler</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
             </ul>
         </div>
     </nav>
-     <div class="container">
-         <div class ="section">
-         Selecciona el lenguaje de programación utilizado y el nombre del archivo del algoritmo
-         </div>
+    <div class="container">
+        <div class="section">
+            Selecciona el lenguaje de programación utilizado y el nombre del archivo del algoritmo
+        </div>
     </div>
     <div class="container">
         <form class="col s12" method="POST" action="/execute/">
@@ -48,11 +48,6 @@
                       <option value="{{l['value']}}">{{l['name']}}</option>
                       {% endfor %}
                     </select>
-
-                </div>
-                <div class="input-field col m12 s12 l6">
-                    <input id="fileselect" class="validate tooltipped" type="text" required name="filename" data-tooltip="Poner el archivo con la ruta correspondiente">
-                    <label for="fileselct">Archivo de Algoritmo</label>
                 </div>
             </div>
             <div class="input-field col 4 s12">
@@ -61,7 +56,20 @@
         </form>
     </div>
 
-
+    <div class="container">
+        <ul>
+            {% for name in names %}
+            <li class="green darken-1 center">{{ name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="container">
+        <ul>
+            {% for numb in numbers %}
+            <li class="green darken-1 center">{{ numb }}</li>
+            {% endfor %}
+        </ul>
+    </div>
     <footer class="page-footer orange ">
         <div class="container">
             <div class="row">
@@ -85,3 +93,13 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+

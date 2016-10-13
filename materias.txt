@@ -1,0 +1,12 @@
+2
+Poo,1,2,2
+1,30,Franky,2
+09:00,11:00,martes
+09:00,11:00,jueves
+2,30,Angela,2
+11:00,13:00,lunes
+11:00,13:00,miercoles
+IngeSoft,2,4,1
+3,30,Miguel,2
+14:00,16:00,martes
+14:00,16:00,jueves

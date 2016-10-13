@@ -1,0 +1,92 @@
+<!Doctype html>
+
+<title>Flask - Algoritmos</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='/css/materialize.min.css')}}">
+
+<script src="{{ url_for('static',filename='/js/jquery.min.js')}}"></script>
+<script src="{{ url_for('static',filename='/js/materialize.min.js')}}"></script>
+<script src="{{ url_for('static',filename='/js/materialize.js')}}"></script>
+
+<!--Inicializar el Select-->
+<html>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
+    $(document).ready(function() {
+        $('.tooltipped').tooltip({
+            delay: 50
+        });
+    });
+</script>
+
+
+<head>
+    <title>Server simple</title>
+</head>
+
+<body class="blue-grey lighten-5">
+    <nav class="light-blue lighten-1">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">PUJ Scheduler</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="section">
+            Seleccione al estudiante para ver su horario
+        </div>
+    </div>
+    <div class="container">
+        <form class="col s12" method="POST" action="/execute/">
+            <div class="row">
+                <div class="input-field col m12 s12 l6">
+                    <select name="language">
+                    {% for l in languages %}    
+                      <option value="{{l['value']}}">{{l['name']}}</option>
+                      {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="input-field col 4 s12">
+                <button class="waves-effect waves-light btn orange accent-3" type="submit"> Ejecutar </button>
+            </div>
+        </form>
+    </div>
+
+
+    <footer class="page-footer orange ">
+        <div class="container">
+            <div class="row">
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Un desarrollo de </h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Camilo Benavides</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://github.com/Mutisantos">Esteban Hernández</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Jimena Vargas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Potenciado por CSSMaterialize©
+                <a class="grey-text text-lighten-4 right" href="http://materializecss.com/">Materialize</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
