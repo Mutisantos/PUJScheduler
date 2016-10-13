@@ -10,18 +10,30 @@ from flask import Flask, render_template,request, send_from_directory
 app = Flask(__name__,static_url_path='')
 
 #Diccionario de Lenguajes
-LANGAUGE_OPTIONS = [ {"name":"C++/C","value":"1"},{"name":"Java","value":"2" }, {"name":"Python","value":"1"} ]
+LANGAUGE_OPTIONS = [ {"name":"C++/C","value":"1"},{"name":"Java","value":"2" }, {"name":"Python","value":"3"} ]
 #Carga de Datos en memoria para la representacion de la informacion
 Students = []
 Subjects = []
 Classes = []
 Schedules = []
 Inscritos = []
+Slots = []
 
 def cargar_datos_entrada():
     
+    global Students
+    global Schedules
+    global Classes
+    global Subjects
+    Students = []
+    Subjects = []
+    Classes = []
+    Schedules = []
+    
     
     with open('materias.txt', 'r') as f:
+        
+        
         data = f.readlines()
         cont = 0
         num_mats = data[cont]
@@ -87,32 +99,75 @@ def cargar_datos_entrada():
                 cont = cont + 1
             s = Estudiante(tokenizado[0],tokenizado[1],tokenizado[2],tokenizado[3],tokenizado[4],mats)
             Students.append(s)
+    
         
 
 
 def cargar_archivo_salida():
-    
+    global Inscritos
+    Inscritos = []
     with open('salida.txt', 'r') as f:            
         data = f.readlines()
         cont = 0
         num_students = data[cont]
         cont = cont + 1
-        
-        print "----- archivo salida -------"
-        
         for i in range (0,int(num_students)):
             student = data[cont]
             tokenizado = data[cont].split(",")
             cant_ids = tokenizado[len(tokenizado)-1]
             cont = cont + 1
             est = Students[i]
-            print est
             for j in range (0, 1):
                 id_clases = data[cont]
-                tokenizado2 = id_clases.split(",")
-                cant_horarios = int(tokenizado2[len(tokenizado2)-1])
+                ids = id_clases.split(",")
+                
+                inscritas = []
+                for k in ids:
+                    c = Classes[int(k)-1]
+                    inscritas.append(c)
+                
+                s = Estudiante(est.ID,est.nombre,est.creditos_aprobados,est.semestre,est.carga_academica,inscritas)    
+                Inscritos.append(s)
+                
+                
                 #print "El estudiante %s tiene las clases con id's %s " % (student ,data[cont])
                 cont = cont + 1
+        
+
+def scheduleMorpher(clases):
+    horario = []
+    for cl in clases:
+        for h in cl.horarios:
+            ini = int(h.inicio)
+            fin = int(h.fin)
+            dia = h.dia
+            diff = fin - ini
+            bloque = ini - 6#Primer horario a las 7
+            for i in range (0,diff):
+                if("lunes" in dia):
+                    sc = Slot(bloque+i,1,cl)
+                    horario.append(sc)
+                elif("martes" in dia):
+                    sc = Slot(bloque+i,2,cl)
+                    horario.append(sc)
+                elif("miercoles" in dia):
+                    sc = Slot(bloque+i,3,cl)
+                    horario.append(sc)
+                elif("jueves" in dia):
+                    sc = Slot(bloque+i,4,cl)
+                    horario.append(sc)
+                elif("viernes" in dia):
+                    sc = Slot(bloque+i,5,cl)
+                    horario.append(sc)
+                elif("sabado" in dia):
+                    sc = Slot(bloque+i,6,cl)
+                    horario.append(sc)
+                elif("domingo" in dia):
+                    sc = Slot(bloque+i,7,cl)
+                    horario.append(sc)
+                
+    print horario
+    return horario          
 
 
 
@@ -123,8 +178,8 @@ def hello_world():
     return render_template("inicio.html", languages = LANGAUGE_OPTIONS)
 
 @app.route('/execute/',methods=['POST'])
-def login():
-    numbers = ["1", "2", "3"]
+def executefile():
+
     filename = request.form['filename']
     language = request.form['language']
     command = []
@@ -141,9 +196,22 @@ def login():
     #Leer el archivo de texto generado
     #Interpretarlo y enviarlo al template
     cargar_archivo_salida()
-    return render_template("selector.html",languages = LANGAUGE_OPTIONS)
+    return render_template("selector.html",inscritos = Inscritos)
 
-
+@app.route('/schedule/',methods=['POST'])
+def schedule():
+    
+    global Inscritos
+    estID = request.form['id']
+    estudiante = None
+    for i in Inscritos:
+        if(i.ID == estID):
+            estudiante = i
+    print estudiante.materias
+    slots = scheduleMorpher(estudiante.materias)#Realmente, clases
+    bloques = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    dias = [1,2,3,4,5,6,7]
+    return render_template("horarios.html",estudiante = estudiante, slots = slots, bloques = bloques, dias = dias)
 
 
 

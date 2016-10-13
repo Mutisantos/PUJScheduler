@@ -2,6 +2,7 @@
 
 <title>Flask - Algoritmos</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static',filename='/css/materialize.min.css')}}">
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='/css/aux.css')}}">
 
 <script src="{{ url_for('static',filename='/js/jquery.min.js')}}"></script>
 <script src="{{ url_for('static',filename='/js/materialize.min.js')}}"></script>
@@ -23,83 +24,86 @@
 
 
 <head>
-    <title>Server simple</title>
+    <title>PUJScheduler - Horario</title>
 </head>
 
 <body class="blue-grey lighten-5">
-    <nav class="light-blue lighten-1">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">PUJ Scheduler</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="section">
-            Selecciona el lenguaje de programación utilizado y el nombre del archivo del algoritmo
-        </div>
-    </div>
-    <div class="container">
-        <form class="col s12" method="POST" action="/execute/">
-            <div class="row">
-                <div class="input-field col m12 s12 l6">
-                    <select name="language">
-                    {% for l in languages %}    
-                      <option value="{{l['value']}}">{{l['name']}}</option>
-                      {% endfor %}
-                    </select>
-                </div>
-            </div>
-            <div class="input-field col 4 s12">
-                <button class="waves-effect waves-light btn orange accent-3" type="submit"> Ejecutar </button>
-            </div>
-        </form>
-    </div>
-
-    <div class="container">
-        <ul>
-            {% for name in names %}
-            <li class="green darken-1 center">{{ name }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="container">
-        <ul>
-            {% for numb in numbers %}
-            <li class="green darken-1 center">{{ numb }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <footer class="page-footer orange ">
-        <div class="container">
-            <div class="row">
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Un desarrollo de </h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Camilo Benavides</a></li>
-                        <li><a class="grey-text text-lighten-3" href="https://github.com/Mutisantos">Esteban Hernández</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Jimena Vargas</a></li>
+    <div class="page-flexbox-wrapper">
+        <header>
+            <nav class="light-blue lighten-1">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo center">PUJ Scheduler</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
                     </ul>
                 </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
+            </nav>
+        </header>
+        <main>
             <div class="container">
-                Potenciado por CSSMaterialize©
-                <a class="grey-text text-lighten-4 right" href="http://materializecss.com/">Materialize</a>
+                <div class="section">
+                    Horario para {{estudiante.nombre}}
+                </div>
             </div>
-        </div>
-    </footer>
+
+
+            <div class="container section">
+                <table id="table" class="responsive-table centered center highlight">
+                    <thead class="light-blue lighten-1 white-text">
+                        <tr class="center">
+                            <th data-field="Lunes">Lunes</th>
+                            <th data-field="Martes">Martes</th>
+                            <th data-field="Miercoles">Miercoles</th>
+                            <th data-field="Jueves">Jueves</th>
+                            <th data-field="Viernes">Viernes</th>
+                            <th data-field="Sábado">Sábado</th>
+                            <th data-field="Domingo">Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for b in bloques %}
+                        <tr>
+                            {% for d in dias %}
+                                {% set count = 0 %}
+                                {% for s in slots %}
+                                    {% if s.posicion|int() == b|int()%}
+                                        {% if s.dia|int() == d|int()%}
+                                            <td>{{s.clase.ID+"-"+s.clase.profesor+s.dia|string}}</td>
+                                            {% set count = count + 1 %}
+                                        {% endif %}
+                                    {% endif %}    
+                                {% endfor %}
+                                {% if count|int() == 0 %}
+                                    <td>-</td>
+                                {%endif %}
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer class="page-footer orange ">
+            <div class="container">
+                <div class="row">
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Un desarrollo de </h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">Camilo Benavides</a></li>
+                            <li><a class="grey-text text-lighten-3" href="https://github.com/Mutisantos">Esteban Hernández</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Jimena Vargas</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    Potenciado por CSSMaterialize©
+                    <a class="grey-text text-lighten-4 right" href="http://materializecss.com/">Materialize</a>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-

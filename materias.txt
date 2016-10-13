@@ -1,12 +1,20 @@
-2
+4
 Poo,1,2,2
 1,30,Franky,2
-09:00,11:00,martes
-09:00,11:00,jueves
+9,11,martes
+9,11,jueves
 2,30,Angela,2
-11:00,13:00,lunes
-11:00,13:00,miercoles
+11,13,lunes
+11,13,miercoles
 IngeSoft,2,4,1
 3,30,Miguel,2
-14:00,16:00,martes
-14:00,16:00,jueves
+14,16,martes
+14,16,jueves
+Mundos Virtuales,2,2,1
+4,30,Jaime,1
+9,11,viernes
+Japonés 1,2,3,1
+5,30,Sensei,3
+14,16,lunes
+14,16,martes
+14,16,viernes

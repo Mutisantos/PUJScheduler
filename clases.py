@@ -1,3 +1,4 @@
+
 class Estudiante(object):
    
     
@@ -31,7 +32,7 @@ class Clase:
         self.profesor = profesor
         self.horarios = horarios
     def __repr__(self):
-     return ""+self.ID+"-"+self.profesor
+     return ""+self.ID+"-"+self.profesor+"-"+self.horarios[0].inicio
     
 class Horario:
    
@@ -42,4 +43,13 @@ class Horario:
         self.dia = dia
     def __repr__(self):
      return ""+self.inicio+"-"+self.fin+"-"+self.dia
-    
+
+
+class Slot:
+
+    def __init__(self, posicion, dia, clase):
+        self.posicion = posicion
+        self.dia = dia
+        self.clase = clase
+    def __repr__(self):
+     return ""+str(self.posicion)+"-"+str(self.dia)+"-"+self.clase.profesor
