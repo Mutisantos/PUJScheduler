@@ -2,16 +2,13 @@
 class Estudiante(object):
    
     
-    def __init__(self, ID, nombre, creditos_aprobados, semestre, carga_academica, materias):
+    def __init__(self, ID ,materias):
         self.ID = ID
-        self.nombre = nombre
-        self.creditos_aprobados = creditos_aprobados
-        self.semestre = semestre
-        self.carga_academica = carga_academica
         self.materias = materias
+        self.horario = [[-1]*7 for i in range(23)]
         
     def __repr__(self):
-     return ""+self.ID+"-"+self.nombre
+     return "Id: "+self.ID+" - Materias: "
     
 class Materia:
     
@@ -26,24 +23,16 @@ class Materia:
 class Clase:
    
     
-    def __init__(self, ID, cupos, profesor, horarios):
+    def __init__(self, ID, cupos, nom_profesor, hora_inicio, hora_fin, dia):
         self.ID = ID
         self.cupos = cupos
-        self.profesor = profesor
-        self.horarios = horarios
-    def __repr__(self):
-     return ""+self.ID+"-"+self.profesor+"-"+self.horarios[0].inicio
-    
-class Horario:
-   
-    
-    def __init__(self, inicio, fin, dia):
-        self.inicio = inicio
-        self.fin = fin
         self.dia = dia
+        self.nom_profesor = nom_profesor
+        self.hora_inicio = hora_inicio
+        self.hora_fin = hora_fin
     def __repr__(self):
-     return ""+self.inicio+"-"+self.fin+"-"+self.dia
-
+     return ""+self.ID+"-"+self.nom_profesor
+    
 
 class Slot:
 
